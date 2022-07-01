@@ -1,48 +1,75 @@
-import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import PropTypes from "prop-types";
+import {
+  faHeart,
+  faStar,
+  faCartShopping,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classes from "./ShopItem.module.scss";
+import { connect } from "react-redux";
 
-function ShopItem() {
+const ShopItem = ({
+  product: { id, title, price, category, image, rating },
+}) => {
+  let editedTitle = "";
+
+  if (title.length > 37) {
+    editedTitle = `${title.slice(0, 37)}...`;
+  } else {
+    editedTitle = title;
+  }
+
+  console.log(editedTitle);
+
   return (
-    <div className={classes.shop_item}>
+    <div className={classes.shop_item} id={id}>
       <div className={classes.shop_item_top}>
         <a className={classes.shop_item_fav} href='/'>
           <span>
             <FontAwesomeIcon icon={faHeart} />
           </span>
         </a>
-        <img
-          src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-          alt=''
-        />
+
+        <img src={image} alt={title} />
+
+        <button className={classes.addtocart_btn}>
+          <span>Add to cart</span>
+          <span>
+            <FontAwesomeIcon icon={faCartShopping} />
+          </span>
+        </button>
       </div>
 
       <div className={classes.shop_item_bottom}>
         <div className={classes.product_details}>
           <h3>
-            <a href='/'>
-              Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+            <a href='/' title={title}>
+              {editedTitle}
             </a>
           </h3>
 
-          <p className={classes.product_category}>men's clothing</p>
+          <p className={classes.product_category}>{category}</p>
         </div>
 
         <div className={classes.product_values}>
-          <div className={classes.product_price}>109.95 $</div>
+          <div className={classes.product_price}>{price} $</div>
 
           <div className={classes.product_ratings}>
             <span>
               <FontAwesomeIcon icon={faStar} />
             </span>
 
-            <span>3.9</span>
+            <span>{rating.rate}</span>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default ShopItem;
+ShopItem.propTypes = {
+  product: PropTypes.object.isRequired,
+};
+
+export default connect(null, {})(ShopItem);
