@@ -1,7 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Filter from "./Filter";
+import ShopContainer from "./ShopContainer";
 
 function Shop() {
-  return <div>Shop</div>;
+  return (
+    <Fragment>
+      <Filter />
+      <ShopContainer />
+    </Fragment>
+  );
 }
 
 export default Shop;
