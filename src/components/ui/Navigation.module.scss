@@ -1,0 +1,17 @@
+.navigation_menu {
+    padding: 0 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .open_cart {
+        border-radius: 0.5rem;
+        height: 3rem;
+        width: 3rem;
+        background-color: #e67e22;
+        display: flex;
+        justify-content: center;   
+        align-items: center;
+        color: #f4f4f4;
+    }
+}

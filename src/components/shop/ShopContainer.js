@@ -4,6 +4,7 @@ import classes from "./ShopContainer.module.scss";
 import { connect } from "react-redux";
 import { getProducts } from "../../actions/product";
 import PropTypes from "prop-types";
+import Navigation from "../ui/Navigation";
 
 function ShopContainer({ getProducts, products: { products, loading } }) {
   useEffect(() => {
@@ -12,7 +13,7 @@ function ShopContainer({ getProducts, products: { products, loading } }) {
 
   return (
     <section className={classes.shop_section}>
-      <div>Header</div>
+      <Navigation />
       {loading ? (
         <p>loading</p>
       ) : (
