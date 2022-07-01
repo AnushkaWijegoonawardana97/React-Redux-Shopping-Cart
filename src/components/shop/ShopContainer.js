@@ -1,23 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ShopItem from "./ShopItem";
 import classes from "./ShopContainer.module.scss";
+import { connect } from "react-redux";
+import { getProducts } from "../../actions/product";
+import PropTypes from "prop-types";
 
-function ShopContainer() {
+function ShopContainer({ getProducts, products: { products, loading } }) {
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   return (
     <section className={classes.shop_section}>
       <div>Header</div>
-      <section className={classes.shop_grid}>
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-        <ShopItem />
-      </section>
+      {loading ? (
+        <p>loading</p>
+      ) : (
+        <section className={classes.shop_grid}>
+          {products.map((product) => (
+            <ShopItem key={product.id} product={product} />
+          ))}
+        </section>
+      )}
     </section>
   );
 }
 
-export default ShopContainer;
+ShopContainer.propTypes = {
+  getProducts: PropTypes.func.isRequired,
+  products: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+
+export default connect(mapStateToProps, { getProducts })(ShopContainer);
