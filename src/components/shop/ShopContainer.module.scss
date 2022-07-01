@@ -1,0 +1,10 @@
+.shop_section {
+    margin-left: 20vw;
+    padding: 1.5rem 2rem 3rem;
+
+    .shop_grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1.5rem;
+    }
+}
