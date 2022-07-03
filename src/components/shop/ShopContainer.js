@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getProducts } from "../../actions/product";
 import PropTypes from "prop-types";
 import Navigation from "../ui/Navigation";
+import { PropagateLoader } from "react-spinners";
 
 function ShopContainer({ getProducts, products: { products, loading } }) {
   useEffect(() => {
@@ -15,7 +16,9 @@ function ShopContainer({ getProducts, products: { products, loading } }) {
     <section className={classes.shop_section}>
       <Navigation />
       {loading ? (
-        <p>loading</p>
+        <div className='loader'>
+          <PropagateLoader color='#d35400' size={32} speedMultiplier={1} />
+        </div>
       ) : (
         <section className={classes.shop_grid}>
           {products.map((product) => (
