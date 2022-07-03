@@ -8,6 +8,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classes from "./ShopItem.module.scss";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ShopItem = ({
   product: { id, title, price, category, image, rating },
@@ -44,9 +45,10 @@ const ShopItem = ({
       <div className={classes.shop_item_bottom}>
         <div className={classes.product_details}>
           <h3>
-            <a href='/' title={title}>
+            <Link to={`/${id}`} title={title}>
+              {" "}
               {editedTitle}
-            </a>
+            </Link>
           </h3>
 
           <p className={classes.product_category}>{category}</p>
