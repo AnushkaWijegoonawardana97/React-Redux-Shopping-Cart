@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import classes from "./Filter.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { PropagateLoader } from "react-spinners";
 
 function Filter({ getCategories, categories: { categories, loading } }) {
   const [priceRange, setPriceRange] = useState(0);
@@ -26,7 +27,9 @@ function Filter({ getCategories, categories: { categories, loading } }) {
 
         <div className={classes.filter_button_section}>
           {loading ? (
-            <p>loading</p>
+            <div className='loader'>
+              <PropagateLoader color='#d35400' size={16} speedMultiplier={1} />
+            </div>
           ) : (
             categories.map((category) => (
               <button className={classes.filter_button_item}>
