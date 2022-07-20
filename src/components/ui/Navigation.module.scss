@@ -3,8 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    
+    a {
+        margin-right: 1.25rem;
+        &:last-child {
+            margin-right: 0rem;
+        }
+    }
 
-    .open_cart {
+    .open_cart, .wish_list, .home {
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
         border-radius: 0.5rem;
         height: 3rem;
@@ -14,5 +21,9 @@
         justify-content: center;   
         align-items: center;
         color: #f4f4f4;
+
+        &:hover {
+            background-color: #d35400;
+        }
     }
 }
