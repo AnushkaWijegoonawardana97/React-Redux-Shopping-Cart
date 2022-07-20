@@ -5,6 +5,7 @@ import Product from "./components/product/Product";
 import Shop from "./components/shop/Shop";
 import { Provider } from "react-redux";
 import store from "./store";
+import Wishlist from "./components/wishlist/Wishlist";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<Shop />} />
           <Route path='/:productId' element={<Product />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/wishlist' element={<Wishlist />} />
         </Routes>
       </BrowserRouter>
     </Provider>

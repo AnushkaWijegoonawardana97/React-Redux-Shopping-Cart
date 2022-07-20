@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const Navigation = (props) => {
   return (
     <div className={classes.navigation_menu}>
-      <Link to='/cart' className={classes.home}>
+      <Link to='/' className={classes.home}>
         <span>
           <FontAwesomeIcon icon={faHouse} />
         </span>
